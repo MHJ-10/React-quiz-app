@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap');
+
+@for $i from 1 through 100 {
+  .w-#{$i} {
+    width: #{$i}#{"%"}
+  }
+}
+
+.body {
+  background-color: rgb(187, 185, 185);
+  font-family: 'Inconsolata', monospace;
+}
+
+@media screen and (min-width: 700px) {
+  .form {
+    width: 50%;
+  }
+  .quiz {
+    width: 75%;
+    position: absolute;
+    left: 10%;
+  }
+  .result {
+    width: 75%;
+  }
+}
+
