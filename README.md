@@ -6,7 +6,7 @@
 
    The questions are taken from this api => https://opentdb.com
 
-   after the quiz is completed by the user or the time is up, the user is directed to the results page and can view the correact answers    percentage and report card.
+   after the quiz is completed by the user or the time is up,the user is directed to the results page and can view the correact answers    percentage and report card.
 
 # Link
 
