@@ -4,9 +4,12 @@ import Form from "./pages/form";
 import NotFound from "./pages/not-found";
 import Quiz from "./pages/quiz";
 import Result from "./pages/result";
-import quizProvider from "./contexts/quizContext";
+import { useReducer } from "react";
+import quizReducer from "./reducers/quizReducer";
+import quizContext from "./contexts/quizContext";
 
 const App = () => {
+  const [quizInfo, dispatch] = useReducer(quizReducer, {});
   const routes = useRoutes([
     {
       path: "/",
@@ -31,9 +34,9 @@ const App = () => {
   ]);
 
   return (
-    <quizProvider>
+    <quizContext.Provider value={{ quizInfo, dispatch}}>
       <StateContext>{routes} </StateContext>
-    </quizProvider>
+    </quizContext.Provider>
   );
 };
 
