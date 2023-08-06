@@ -1,15 +1,18 @@
-import { StateContext } from "./hooks/stateContext";
+import { useReducer } from "react";
 import { Navigate, useRoutes } from "react-router-dom";
+import quizContext from "./contexts/quizContext";
+import userAnswersContext from "./contexts/userAnswersContext";
+import { StateContext } from "./hooks/stateContext";
 import Form from "./pages/form";
 import NotFound from "./pages/not-found";
 import Quiz from "./pages/quiz";
 import Result from "./pages/result";
-import { useReducer } from "react";
 import quizReducer from "./reducers/quizReducer";
-import quizContext from "./contexts/quizContext";
+import userAnswersReducer from "./reducers/userAnswersReducer";
 
 const App = () => {
-  const [quizInfo, dispatch] = useReducer(quizReducer, {});
+  const [quizInfo, quizDispatch] = useReducer(quizReducer, {});
+  const [userAnswers, userAnswersDispatch] = useReducer(userAnswersReducer, []);
   const routes = useRoutes([
     {
       path: "/",
@@ -34,8 +37,12 @@ const App = () => {
   ]);
 
   return (
-    <quizContext.Provider value={{ quizInfo, dispatch}}>
-      <StateContext>{routes} </StateContext>
+    <quizContext.Provider value={{ quizInfo, dispatch: quizDispatch }}>
+      <userAnswersContext.Provider
+        value={{ userAnswers, dispatch: userAnswersDispatch }}
+      >
+        <StateContext>{routes} </StateContext>
+      </userAnswersContext.Provider>
     </quizContext.Provider>
   );
 };
