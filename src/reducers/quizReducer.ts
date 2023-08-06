@@ -1,4 +1,4 @@
-interface QuizInfo {
+export interface QuizInfo {
   name: string;
   amount: number;
   category: number;
