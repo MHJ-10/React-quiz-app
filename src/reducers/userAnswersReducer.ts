@@ -7,16 +7,16 @@ export interface AnswerObject {
 
 export interface UserAnswersAction {
   type: "ADD_USER_ANSWER";
-  userAnswers: AnswerObject[];
+  userAnswer: AnswerObject;
 }
 
 const userAnswersReducer = (
-  userAnswers: AnswerObject,
+  userAnswers: AnswerObject[],
   action: UserAnswersAction
 ) => {
   switch (action.type) {
     case "ADD_USER_ANSWER":
-      return [...action.userAnswers, userAnswers];
+      return [...userAnswers, action.userAnswer];
   }
 };
 
