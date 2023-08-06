@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AppContext } from "../hooks/stateContext";
 import quizContext from "../contexts/quizContext";
+import userAnswersContext from "../contexts/userAnswersContext";
+import { AppContext } from "../hooks/stateContext";
 
 const Result = () => {
-  const { userAnswers, setUserAnswers, questions, setQuestions } =
-    useContext(AppContext);
+  const { questions, setQuestions } = useContext(AppContext);
   const { quizInfo } = useContext(quizContext);
+  const { userAnswers } = useContext(userAnswersContext);
   const renderPercent = () => {
     const total = quizInfo.amount;
     let correctLength = 0;
@@ -31,7 +32,6 @@ const Result = () => {
 
   const handleReset = () => {
     setQuestions([]);
-    setUserAnswers([]);
   };
 
   return (
