@@ -5,7 +5,7 @@ import {
 } from "../reducers/userAnswersReducer";
 
 interface UserAnswersContextType {
-  userAnswers: AnswerObject;
+  userAnswers: AnswerObject[];
   dispatch: Dispatch<UserAnswersAction>;
 }
 
