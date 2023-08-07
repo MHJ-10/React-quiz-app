@@ -9,10 +9,13 @@ import Quiz from "./pages/quiz";
 import Result from "./pages/result";
 import quizReducer from "./reducers/quizReducer";
 import userAnswersReducer from "./reducers/userAnswersReducer";
+import QuestionsReducer from "./reducers/questionsReducer";
+import QuestionsContext from "./contexts/questionsContext";
 
 const App = () => {
   const [quizInfo, quizDispatch] = useReducer(quizReducer, {});
   const [userAnswers, userAnswersDispatch] = useReducer(userAnswersReducer, []);
+  const [questions, questionsDispatch] = useReducer(QuestionsReducer, []);
   const routes = useRoutes([
     {
       path: "/",
@@ -41,7 +44,9 @@ const App = () => {
       <userAnswersContext.Provider
         value={{ userAnswers, dispatch: userAnswersDispatch }}
       >
-        <StateContext>{routes} </StateContext>
+        <QuestionsContext.Provider value={{ questions, questionsDispatch }}>
+          <StateContext>{routes} </StateContext>
+        </QuestionsContext.Provider>
       </userAnswersContext.Provider>
     </quizContext.Provider>
   );
