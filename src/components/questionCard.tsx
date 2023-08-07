@@ -3,7 +3,8 @@ import { ArrowLeft, ArrowRight } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import userAnswersContext from "../contexts/userAnswersContext";
 import { LoadTimeHook } from "../hooks/loadTimeHook";
-import { AnswerObject, AppContext } from "../hooks/stateContext";
+import { AppContext } from "../hooks/stateContext";
+import { AnswerObject } from "../reducers/userAnswersReducer";
 
 interface QuestionDetails {
   question: string;
