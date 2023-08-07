@@ -1,17 +1,17 @@
 import React, { useContext, useState } from "react";
 import QuestionCard from "../components/questionCard";
+import QuestionsContext from "../contexts/questionsContext";
 import quizContext from "../contexts/quizContext";
 import userAnswersContext from "../contexts/userAnswersContext";
 import { LoadQuestionHook } from "../hooks/loadQuestionsHook";
-import { AppContext } from "../hooks/stateContext";
 
 const Quiz = () => {
-  const { questions, setQuestions } = useContext(AppContext);
   const [number, setNumber] = useState<number>(0);
+  const { questions } = useContext(QuestionsContext);
   const { userAnswers, dispatch } = useContext(userAnswersContext);
   const { quizInfo } = useContext(quizContext);
 
-  LoadQuestionHook(quizInfo.amount, quizInfo.category, setQuestions);
+  LoadQuestionHook(quizInfo.amount, quizInfo.category);
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     const answer = e.currentTarget.value;
@@ -42,7 +42,6 @@ const Quiz = () => {
         <div>
           <div className="spinner-border text-danger text-center mx-auto"></div>
           <div>
-            {" "}
             <h5 className="text-danger">Please wait to load questions...</h5>
           </div>
         </div>
