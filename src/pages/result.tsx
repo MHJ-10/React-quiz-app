@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import QuestionsContext from "../contexts/questionsContext";
 import quizContext from "../contexts/quizContext";
 import userAnswersContext from "../contexts/userAnswersContext";
-import { AppContext } from "../hooks/stateContext";
 
 const Result = () => {
-  const { questions, setQuestions } = useContext(AppContext);
+  const { questions } = useContext(QuestionsContext);
   const { quizInfo } = useContext(quizContext);
   const { userAnswers } = useContext(userAnswersContext);
   const renderPercent = () => {
@@ -30,9 +30,7 @@ const Result = () => {
     return <p className="badge bg-primary">{percent.toFixed(2)} %</p>;
   };
 
-  const handleReset = () => {
-    setQuestions([]);
-  };
+  const handleReset = () => {};
 
   return (
     <div className="result text-center mx-auto px-2 my-3">
