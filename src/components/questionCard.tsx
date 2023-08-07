@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { ArrowLeft, ArrowRight } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import QuestionsContext from "../contexts/questionsContext";
 import userAnswersContext from "../contexts/userAnswersContext";
 import { LoadTimeHook } from "../hooks/loadTimeHook";
-import { AppContext } from "../hooks/stateContext";
 import { AnswerObject } from "../reducers/userAnswersReducer";
 
 interface QuestionDetails {
@@ -28,7 +28,7 @@ const QuestionCard = ({
   onPrevious,
 }: QuestionDetails) => {
   const [time, setTime] = useState<number>(totalQuestion * 10);
-  const { questions } = useContext(AppContext);
+  const { questions } = useContext(QuestionsContext);
   const { userAnswers } = useContext(userAnswersContext);
   const progressPercent = (questionNumber / totalQuestion) * 100;
 
@@ -79,8 +79,7 @@ const QuestionCard = ({
           className="btn btn-warning btn-sm rounded rounded-circle border-border-2 border-danger position-absolute top-50 start-0 ms-3 mt-5"
         >
           <h4 className="text-danger">
-            {" "}
-            <ArrowLeft />{" "}
+            <ArrowLeft />
           </h4>
         </button>
         <button
@@ -89,8 +88,7 @@ const QuestionCard = ({
           className="btn btn-warning btn-sm rounded rounded-circle border-border-2 border-danger position-absolute top-50 end-0 me-3 mt-5"
         >
           <h4 className="text-danger">
-            {" "}
-            <ArrowRight />{" "}
+            <ArrowRight />
           </h4>
         </button>
       </div>
