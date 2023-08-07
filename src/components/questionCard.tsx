@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 import QuestionsContext from "../contexts/questionsContext";
 import userAnswersContext from "../contexts/userAnswersContext";
 import { LoadTimeHook } from "../hooks/loadTimeHook";
-import { AnswerObject } from "../reducers/userAnswersReducer";
 
 interface QuestionDetails {
   question: string;
   answers: string[];
   callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  userAnswer: AnswerObject | undefined;
   questionNumber: number;
   totalQuestion: number;
   onNext: () => void;
@@ -21,7 +19,6 @@ const QuestionCard = ({
   question,
   answers,
   callback,
-  userAnswer,
   questionNumber,
   totalQuestion,
   onNext,

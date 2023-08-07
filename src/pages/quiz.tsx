@@ -8,7 +8,7 @@ import { LoadQuestionHook } from "../hooks/loadQuestionsHook";
 const Quiz = () => {
   const [number, setNumber] = useState<number>(0);
   const { questions } = useContext(QuestionsContext);
-  const { userAnswers, dispatch } = useContext(userAnswersContext);
+  const { dispatch } = useContext(userAnswersContext);
   const { quizInfo } = useContext(quizContext);
 
   LoadQuestionHook(quizInfo.amount, quizInfo.category);
@@ -53,7 +53,6 @@ const Quiz = () => {
             answers={questions[number].answers}
             questionNumber={number + 1}
             totalQuestion={quizInfo.amount}
-            userAnswer={userAnswers ? userAnswers[number] : undefined}
             callback={checkAnswer}
             onNext={nextQuestion}
             onPrevious={previousQuestion}
