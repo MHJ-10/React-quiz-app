@@ -4,7 +4,7 @@ import { QuestionState } from "../services/api";
 
 interface QuestionsContextType {
   questions: QuestionState[];
-  dispatch: Dispatch<QuestionsAction>;
+  questionsDispatch: Dispatch<QuestionsAction>;
 }
 
 const QuestionsContext = createContext<QuestionsContextType>(
