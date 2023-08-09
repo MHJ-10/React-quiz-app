@@ -1,15 +1,13 @@
-import { useReducer } from "react";
 import { Navigate, useRoutes } from "react-router-dom";
-import QuestionsContext from "./contexts/questionsContext";
 import Form from "./pages/form";
 import NotFound from "./pages/not-found";
 import Quiz from "./pages/quiz";
 import Result from "./pages/result";
+import QuestionsProvider from "./providers/questionsProvider";
 import QuizProvider from "./providers/quizProvider";
-import QuestionsReducer from "./reducers/questionsReducer";
 import UserAnswersProvider from "./providers/userAnswersProvider";
+
 const App = () => {
-  const [questions, questionsDispatch] = useReducer(QuestionsReducer, []);
   const routes = useRoutes([
     {
       path: "/",
@@ -36,9 +34,7 @@ const App = () => {
   return (
     <QuizProvider>
       <UserAnswersProvider>
-        <QuestionsContext.Provider value={{ questions, questionsDispatch }}>
-          {routes}
-        </QuestionsContext.Provider>
+        <QuestionsProvider>{routes}</QuestionsProvider>
       </UserAnswersProvider>
     </QuizProvider>
   );
