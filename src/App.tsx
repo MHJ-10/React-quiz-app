@@ -1,18 +1,16 @@
 import { useReducer } from "react";
 import { Navigate, useRoutes } from "react-router-dom";
 import QuestionsContext from "./contexts/questionsContext";
-import quizContext from "./contexts/quizContext";
 import userAnswersContext from "./contexts/userAnswersContext";
 import Form from "./pages/form";
 import NotFound from "./pages/not-found";
 import Quiz from "./pages/quiz";
 import Result from "./pages/result";
 import QuestionsReducer from "./reducers/questionsReducer";
-import quizReducer from "./reducers/quizReducer";
 import userAnswersReducer from "./reducers/userAnswersReducer";
+import QuizProvider from "./providers/quizProvider";
 
 const App = () => {
-  const [quizInfo, quizDispatch] = useReducer(quizReducer, {});
   const [userAnswers, userAnswersDispatch] = useReducer(userAnswersReducer, []);
   const [questions, questionsDispatch] = useReducer(QuestionsReducer, []);
   const routes = useRoutes([
@@ -39,7 +37,7 @@ const App = () => {
   ]);
 
   return (
-    <quizContext.Provider value={{ quizInfo, dispatch: quizDispatch }}>
+    <QuizProvider>
       <userAnswersContext.Provider
         value={{ userAnswers, dispatch: userAnswersDispatch }}
       >
@@ -47,7 +45,7 @@ const App = () => {
           {routes}
         </QuestionsContext.Provider>
       </userAnswersContext.Provider>
-    </quizContext.Provider>
+    </QuizProvider>
   );
 };
 
