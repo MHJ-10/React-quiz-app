@@ -1,40 +1,16 @@
-import { Navigate, useRoutes } from "react-router-dom";
-import Form from "./pages/form";
-import NotFound from "./pages/not-found";
-import Quiz from "./pages/quiz";
-import Result from "./pages/result";
+import { useRoutes } from "react-router-dom";
 import QuestionsProvider from "./providers/questionsProvider";
 import QuizProvider from "./providers/quizProvider";
 import UserAnswersProvider from "./providers/userAnswersProvider";
+import routes from "./routes";
 
 const App = () => {
-  const routes = useRoutes([
-    {
-      path: "/",
-      element: <Form />,
-    },
-    {
-      path: "/quiz",
-      element: <Quiz />,
-    },
-    {
-      path: "/result",
-      element: <Result />,
-    },
-    {
-      path: "/not-found",
-      element: <NotFound />,
-    },
-    {
-      path: "*",
-      element: <Navigate to="/not-found" replace />,
-    },
-  ]);
+  const router = useRoutes(routes);
 
   return (
     <QuizProvider>
       <UserAnswersProvider>
-        <QuestionsProvider>{routes}</QuestionsProvider>
+        <QuestionsProvider>{router}</QuestionsProvider>
       </UserAnswersProvider>
     </QuizProvider>
   );
