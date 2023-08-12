@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import QuestionCard from "../components/questionCard";
-import { LoadQuestionHook } from "../hooks/loadQuestionsHook";
+import { useLoadedQuestions } from "../hooks/useLoadedQuestions";
 import useQuestions from "../hooks/useQuestions";
 import useQuiz from "../hooks/useQuiz";
 import useUserAnswers from "../hooks/useUserAnswers";
@@ -11,7 +11,7 @@ const Quiz = () => {
   const { dispatch } = useUserAnswers();
   const { quizInfo } = useQuiz();
 
-  LoadQuestionHook(quizInfo.amount, quizInfo.category);
+  useLoadedQuestions(quizInfo.amount, quizInfo.category);
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     const answer = e.currentTarget.value;
