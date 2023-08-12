@@ -1,15 +1,15 @@
 import React, { useContext, useState } from "react";
 import QuestionCard from "../components/questionCard";
 import QuestionsContext from "../contexts/questionsContext";
-import quizContext from "../contexts/quizContext";
 import userAnswersContext from "../contexts/userAnswersContext";
 import { LoadQuestionHook } from "../hooks/loadQuestionsHook";
+import useQuiz from "../hooks/useQuiz";
 
 const Quiz = () => {
   const [number, setNumber] = useState<number>(0);
   const { questions } = useContext(QuestionsContext);
   const { dispatch } = useContext(userAnswersContext);
-  const { quizInfo } = useContext(quizContext);
+  const { quizInfo } = useQuiz();
 
   LoadQuestionHook(quizInfo.amount, quizInfo.category);
 
