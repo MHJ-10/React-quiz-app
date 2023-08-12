@@ -1,13 +1,12 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import userAnswersContext from "../contexts/userAnswersContext";
 import useQuestions from "../hooks/useQuestions";
 import useQuiz from "../hooks/useQuiz";
+import useUserAnswers from "../hooks/useUserAnswers";
 
 const Result = () => {
   const { questions } = useQuestions();
   const { quizInfo } = useQuiz();
-  const { userAnswers } = useContext(userAnswersContext);
+  const { userAnswers } = useUserAnswers();
   const renderPercent = () => {
     const total = quizInfo.amount;
     let correctLength = 0;
