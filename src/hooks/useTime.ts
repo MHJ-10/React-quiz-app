@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 
-interface Time  {
-    time: number
-    setTime: React.Dispatch<React.SetStateAction<number>>
+interface Time {
+  time: number;
+  setTime: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const LoadTimeHook = ({time, setTime}: Time) => {
+export const useTime = ({ time, setTime }: Time) => {
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setTime(prevTime => prevTime - 1);
+      setTime((prevTime) => prevTime - 1);
     }, 1000);
 
     if (time === 0) {
@@ -17,6 +17,5 @@ export const LoadTimeHook = ({time, setTime}: Time) => {
     }
 
     return () => clearInterval(intervalId);
-  }, [time]); 
-}
- 
+  }, [time]);
+};

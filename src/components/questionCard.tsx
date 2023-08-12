@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ArrowLeft, ArrowRight } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import { LoadTimeHook } from "../hooks/loadTimeHook";
+import { useTime } from "../hooks/useTime";
 import useQuestions from "../hooks/useQuestions";
 import useUserAnswers from "../hooks/useUserAnswers";
 
@@ -29,7 +29,7 @@ const QuestionCard = ({
   const { userAnswers } = useUserAnswers();
   const progressPercent = (questionNumber / totalQuestion) * 100;
 
-  LoadTimeHook({ time, setTime });
+  useTime({ time, setTime });
 
   const handleDisabled = () => {
     const showedQuestion = questions.find(
