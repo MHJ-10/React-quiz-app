@@ -1,11 +1,10 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Input from "../components/Input";
 import Select from "../components/Select";
-import quizContext from "../contexts/quizContext";
+import useQuiz from "../hooks/useQuiz";
 
 const Form = () => {
-  const { quizInfo, dispatch } = useContext(quizContext);
+  const { quizInfo, dispatch } = useQuiz();
 
   const enabled: boolean =
     !!quizInfo.name &&
