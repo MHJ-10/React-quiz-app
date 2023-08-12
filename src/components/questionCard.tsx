@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { ArrowLeft, ArrowRight } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import QuestionsContext from "../contexts/questionsContext";
 import userAnswersContext from "../contexts/userAnswersContext";
 import { LoadTimeHook } from "../hooks/loadTimeHook";
+import useQuestions from "../hooks/useQuestions";
 
 interface QuestionDetails {
   question: string;
@@ -25,7 +25,7 @@ const QuestionCard = ({
   onPrevious,
 }: QuestionDetails) => {
   const [time, setTime] = useState<number>(totalQuestion * 10);
-  const { questions } = useContext(QuestionsContext);
+  const { questions } = useQuestions();
   const { userAnswers } = useContext(userAnswersContext);
   const progressPercent = (questionNumber / totalQuestion) * 100;
 
